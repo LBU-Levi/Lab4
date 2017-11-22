@@ -35,4 +35,14 @@ public class Todo {
     {
         mIsComplete = bIsComplete;
     }
+
+    public String getTitle()
+    {
+        return mTitle;
+    }
+
+    public Date getDate()
+    {
+        return mDate;
+    }
 }
