@@ -57,7 +57,7 @@ public class TodoListFragment extends Fragment
         {
             case R.id.new_todo:
 
-                Todo todo = new Todo();
+                TaskList todo = new TaskList();
                 TodoModel.get(getActivity()).addTodo(todo);
 
                 Intent intent = TodoActivity.newIntent(getActivity(), todo.getId());
@@ -96,7 +96,7 @@ public class TodoListFragment extends Fragment
 
     public class TodoHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        private Todo mTodo;
+        private TaskList mTodo;
         private TextView mTextViewTitle;
         private TextView mTextViewDate;
 
@@ -117,10 +117,9 @@ public class TodoListFragment extends Fragment
             Toast.makeText(getActivity(), mTodo.getTitle() + " clicked", Toast.LENGTH_SHORT).show();
             Intent intent = TodoActivity.newIntent(getActivity(), mTodo.getId());
             startActivity(intent);
-
         }
 
-        public void bind(Todo todo)
+        public void bind(TaskList todo)
         {
             mTodo = todo;
             mTextViewTitle.setText(mTodo.getTitle());
@@ -130,9 +129,9 @@ public class TodoListFragment extends Fragment
 
     public class TodoAdapter extends RecyclerView.Adapter<TodoListFragment.TodoHolder>
     {
-        private List<Todo> mTodos;
+        private List<TaskList> mTodos;
 
-        public TodoAdapter(List<Todo> todos)
+        public TodoAdapter(List<TaskList> todos)
         {
             mTodos = todos;
         }
@@ -147,8 +146,7 @@ public class TodoListFragment extends Fragment
         @Override
         public void onBindViewHolder(TodoHolder holder, int position)
         {
-            Todo todo = mTodos.get(position);
-            holder.bind(todo);
+            holder.bind(mTodos.get(position));
         }
 
         @Override

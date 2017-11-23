@@ -19,10 +19,9 @@ import java.util.UUID;
 
 public class TodoFragment extends Fragment
 {
-
     private static final String ARG_TODO_ID = "todo_id";
 
-    private Todo mTodo;
+    private TaskList mTodo;
     private EditText mEditTextTitle;
     private Button mButtonDate;
     private CheckBox mCheckBoxIsComplete;
@@ -46,28 +45,9 @@ public class TodoFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        /*
-         Fragment accessing the intent from the hosting Activity as in the following code snippet
-         allows for simple code that works.
-
-        UUID todoId = (UUID) getActivity()
-                .getIntent().getSerializableExtra(TodoActivity.EXTRA_TODO_ID);
-
-         The disadvantage: TodoFragment is no longer reusable as it is coupled to Activities whoes
-         intent has to contain the todoId.
-
-         Solution: store the todoId in the fragment's arguments bundle.
-            See the TodoFragment newInstance(UUID todoId) method.
-
-         Then to create a new fragment, the TodoActivity should call TodoFragment.newInstance(UUID)
-         and pass in the UUID it retrieves from its extra argument.
-
-        */
-
         UUID todoId = (UUID) getArguments().getSerializable(ARG_TODO_ID);
 
         mTodo = TodoModel.get(getActivity()).getTodo(todoId);
-
     }
 
     @Nullable

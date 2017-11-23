@@ -34,6 +34,12 @@ public class TodoActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        InitialiseApp();
+    }
+
+    private void InitialiseApp()
+    {
         setContentView(R.layout.activity_fragment);
 
         FragmentManager fm = getSupportFragmentManager();
@@ -41,7 +47,6 @@ public class TodoActivity extends AppCompatActivity
 
         if (fragment == null)
         {
-
             Fragment todoFragment = createFragment();
 
             fm.beginTransaction().add(R.id.fragment_container, todoFragment).commit();

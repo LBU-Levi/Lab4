@@ -9,7 +9,7 @@ public class TodoModel
 {
     private static TodoModel sTodoModel;
 
-    private ArrayList<Todo> mTodoList;
+    private ArrayList<TaskList> mTodoList;
 
     public static TodoModel get(Context context)
     {
@@ -29,7 +29,7 @@ public class TodoModel
 
         for (int i = 0; i < 3; i++)
         {
-            Todo todo = new Todo();
+            TaskList todo = new TaskList();
             todo.setTitle("Todo title " + i);
             todo.setDetail("Detail for task " + todo.getId().toString());
             todo.setComplete(false);
@@ -38,9 +38,9 @@ public class TodoModel
         }
     }
 
-    public Todo getTodo(UUID todoId)
+    public TaskList getTodo(UUID todoId)
     {
-        for (Todo todo : mTodoList)
+        for (TaskList todo : mTodoList)
         {
             if (todo.getId().equals(todoId))
             {
@@ -51,12 +51,12 @@ public class TodoModel
         return null;
     }
 
-    public ArrayList<Todo> getTodos()
+    public ArrayList<TaskList> getTodos()
     {
         return mTodoList;
     }
 
-    public void addTodo(Todo todo)
+    public void addTodo(TaskList todo)
     {
         mTodoList.add(todo);
     }

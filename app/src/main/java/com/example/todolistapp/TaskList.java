@@ -3,7 +3,7 @@ package com.example.todolistapp;
 import java.util.Date;
 import java.util.UUID;
 
-public class Todo
+public class TaskList
 {
     private UUID mId;
     private String mTitle;
@@ -11,7 +11,7 @@ public class Todo
     private Date mDate;
     private boolean mIsComplete;
 
-    public Todo()
+    public TaskList()
     {
         mId = UUID.randomUUID();
         mDate = new Date();
