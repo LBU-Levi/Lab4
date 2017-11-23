@@ -17,7 +17,8 @@ import android.widget.EditText;
 
 import java.util.UUID;
 
-public class TodoFragment extends Fragment {
+public class TodoFragment extends Fragment
+{
 
     private static final String ARG_TODO_ID = "todo_id";
 
@@ -30,7 +31,8 @@ public class TodoFragment extends Fragment {
     Rather than the calling the constructor directly, Activity(s) should call newInstance
     and pass required parameters that the fragment needs to create its arguments.
      */
-    public static TodoFragment newInstance(UUID todoId) {
+    public static TodoFragment newInstance(UUID todoId)
+    {
         Bundle args = new Bundle();
         args.putSerializable(ARG_TODO_ID, todoId);
 
@@ -40,7 +42,8 @@ public class TodoFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         /*
@@ -69,22 +72,24 @@ public class TodoFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
-        mEditTextTitle = (EditText) view.findViewById(R.id.todo_title);
+        mEditTextTitle = view.findViewById(R.id.todo_title);
         mEditTextTitle.setText(mTodo.getTitle());
-        mEditTextTitle.addTextChangedListener(new TextWatcher() {
+
+        mEditTextTitle.addTextChangedListener(new TextWatcher()
+        {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
                 // This line is intentionally left blank
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
                 mTodo.setTitle(s.toString());
             }
 
@@ -94,21 +99,22 @@ public class TodoFragment extends Fragment {
             }
         });
 
-        mButtonDate = (Button) view.findViewById(R.id.todo_date);
+        mButtonDate = view.findViewById(R.id.todo_date);
         mButtonDate.setText(mTodo.getDate().toString());
         mButtonDate.setEnabled(false);
 
-        mCheckBoxIsComplete = (CheckBox) view.findViewById(R.id.todo_complete);
-        mCheckBoxIsComplete.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+        mCheckBoxIsComplete = view.findViewById(R.id.todo_complete);
+        mCheckBoxIsComplete.setOnCheckedChangeListener(new OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
                 Log.d("DEBUG **** TodoFragment","called onCheckedChanged");
                 mTodo.setComplete(isChecked);
             }
         });
 
         return view;
-
     }
 }
 
